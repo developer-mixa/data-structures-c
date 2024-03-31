@@ -27,6 +27,12 @@ void testLinkedList(){
     int r[] = {1,2,3,4,5};
     linkedList.insertValues(r, 5);
     linkedList.print();
+    cout << "Swap 3 and 6 positions" << endl;
+    linkedList.swapPlaces(3, 6);
+    linkedList.print();
+    cout << "Reversed List" << endl;
+    linkedList.reverse();
+    linkedList.print();
 }
 
 int main(){

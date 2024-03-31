@@ -109,6 +109,55 @@ public:
         length--;
     }
 
+    void swap(int firstIndex, int secondIndex){
+        int needLength = getLength() - 1;
+        if(firstIndex < 0 || firstIndex > needLength || secondIndex < 0 || secondIndex > needLength){
+            return;
+        }
+
+        if(firstIndex == secondIndex) return;
+
+        int maxIndex = max(firstIndex, secondIndex);
+
+        Node<T>* firstItem = head;
+        Node<T>* secondItem = head;
+        int count = 0;
+        while (true) {
+
+            if(count < firstIndex){
+                firstItem = firstItem->next;
+            }
+
+            if(count < secondIndex){
+                secondItem = secondItem->next;
+            }
+
+            if(count == maxIndex){
+                T tempFirstData = firstItem->data;
+                firstItem->data = secondItem->data;
+                secondItem->data = tempFirstData;
+                break;
+            }
+
+            count++;
+        }
+    }
+
+    void reverse() {
+        Node<T>* previousNode = NULL;
+        Node<T>* currentNode = head;
+        Node<T>* nextNode = NULL;
+
+        while (currentNode != NULL) {
+            nextNode = currentNode->next;
+            currentNode->next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        head = previousNode;
+    }
+
     void removeLast(){
         removeAt(getLength()-1);
     }
